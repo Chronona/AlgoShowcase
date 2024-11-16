@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "hello-world"
+version = "0.1.0"
+description = "Hello World implementation in Python"
+authors = ["Chronona"]
+
+[tool.poetry.dependencies]
+python = "^3.12.7"  # 使用するPythonのバージョン
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
