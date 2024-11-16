@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - automation  # automationブランチにプッシュされたときに実行
+  pull_request:
+    branches:
+      - automation  # automationブランチへのプルリクエストが作成されたときに実行
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'  # 使用するPythonのバージョンを指定
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Poetryのパスを追加
+
+      - name: Install dependencies
+        run: |
+          poetry install  # Poetryを使用して依存関係をインストール
+
+      - name: Install R
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y r-base  # Rをインストール
+
+      - name: Run all tests
+        run: |
+          chmod +x AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
+          AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
