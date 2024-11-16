@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# JSONからPythonバージョンを取得する関数
+get_python_version() {
+    echo $(jq -r '.python_version' config.json)
+}
+
+# Pythonバージョンの取得
+PYTHON_VERSION=$(get_python_version)
+
 # Python環境のセットアップ
 echo "Setting up Python environment with pyenv and poetry..."
 
@@ -10,8 +18,8 @@ if ! command -v pyenv &> /dev/null; then
 fi
 
 # Pythonバージョンのインストール
-pyenv install 3.12.7  # 必要なバージョンを指定
-pyenv local 3.12.7
+pyenv install $PYTHON_VERSION
+pyenv local $PYTHON_VERSION
 
 # poetryのインストール
 if ! command -v poetry &> /dev/null; then
@@ -19,5 +27,3 @@ if ! command -v poetry &> /dev/null; then
     exit 1
 fi
 
-# 依存関係のインストール
-poetry install
