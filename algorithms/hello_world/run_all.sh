@@ -29,5 +29,5 @@ for file in ` find . -name "hello.*" -print`; do
             echo "Unsupported file type: $file"
             ;;
     esac
-    echo '/n'
+    echo ''
 done
