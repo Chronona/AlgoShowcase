@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Nim
         run: |
-          curl https://nim-lang.org/choosenim/init.sh -sSf | sh 
+          curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y
           echo 'export PATH="$HOME/.nimble/bin:$PATH"' >> ~/.bash_aliases
 
       - name: Load .bashrc
