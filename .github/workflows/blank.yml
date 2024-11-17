@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - automation # automationブランチにプッシュされたときに実行
+  pull_request:
+    branches:
+      - automation # automationブランチへのプルリクエストが作成されたときに実行
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.12" # 使用するPythonのバージョンを指定
+
+      - name: Install R
+        run: |
+          sudo apt update
+          sudo apt install -y r-base  # Rをインストール
+
+      - name: Install Nim
+        run: |
+          curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y
+          export PATH="$HOME/.nimble/bin:$PATH"
+          echo "PATH=${PATH}" >> $GITHUB_ENV
+
+      - name: List directory structure
+        run: |
+          ls -R ~/ | grep AlgoShowcase
+          ls /home/runner/work/AlgoShowcase/AlgoShowcase/algorithms/hello_world/
+
+      - name: Run all tests
+        run: |
+          chmod +x /home/runner/work/AlgoShowcase/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
+          /home/runner/work/AlgoShowcase/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
