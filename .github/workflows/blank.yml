@@ -3,12 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - automation # automationブランチにプッシュされたときに実行
+      - installCs  # ブランチにプッシュされたときに実行
   pull_request:
     branches:
-      - automation # automationブランチへのプルリクエストが作成されたときに実行
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+      - installCs  # ブランチへのプルリクエストが作成されたときに実行
+  workflow_dispatch:  # 手動トリガーを追加
 
 jobs:
   test:
@@ -21,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.12" # 使用するPythonのバージョンを指定
+          python-version: "3.12"  # 使用するPythonのバージョンを指定
 
       - name: Install R
         run: |
@@ -31,8 +30,11 @@ jobs:
       - name: Install Nim
         run: |
           curl https://nim-lang.org/choosenim/init.sh -sSf | sh -s -- -y
-          export PATH="$HOME/.nimble/bin:$PATH"
-          echo "PATH=${PATH}" >> $GITHUB_ENV
+          echo "$HOME/.nimble/bin" >> $GITHUB_PATH
+
+      - name: Install Csharp
+        run: |
+          sudo apt install -y mono-complete  # C#の完全なセットをインストール
 
       - name: List directory structure
         run: |
