@@ -18,7 +18,7 @@ for file in ` find . -name "hello.*" -print`; do
             ;;
         *.nim)
             echo "Running $file..."
-            nim c -r src/hello.nim
+            nim c -r "$file"
             ;;
         *)
             echo "Unsupported file type: $file"
