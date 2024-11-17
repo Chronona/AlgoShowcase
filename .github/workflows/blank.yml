@@ -40,9 +40,9 @@ jobs:
       - name: List directory structure
         run: |
           ls -R ~/ | grep AlgoShowcase
-          ls ~/AlgoShowcase/algorithms/hello_world/
+          ls ~/AlgoShowcase/AlgoShowcase/algorithms/hello_world/
 
       - name: Run all tests
         run: |
-          chmod +x ~/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
-          ~/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
+          chmod +x ~/AlgoShowcase/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
+          ~/AlgoShowcase/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
