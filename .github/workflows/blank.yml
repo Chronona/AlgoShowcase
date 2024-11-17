@@ -3,16 +3,15 @@ name: CI
 on:
   push:
     branches:
-      - automation  # automationブランチにプッシュされたときに実行
+      - automation # automationブランチにプッシュされたときに実行
   pull_request:
     branches:
-      - automation  # automationブランチへのプルリクエストが作成されたときに実行
+      - automation # automationブランチへのプルリクエストが作成されたときに実行
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'  # 使用するPythonのバージョンを指定
+          python-version: "3.12" # 使用するPythonのバージョンを指定
 
       - name: Install R
         run: |
@@ -31,5 +30,5 @@ jobs:
 
       - name: Run all tests
         run: |
-          chmod +x AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
-          AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
+          chmod +x /home/runner/work/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
+          /home/runner/work/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
