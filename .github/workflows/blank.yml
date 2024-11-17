@@ -24,15 +24,6 @@ jobs:
         with:
           python-version: '3.12'  # 使用するPythonのバージョンを指定
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Poetryのパスを追加
-
-      - name: Install dependencies
-        run: |
-          poetry install  # Poetryを使用して依存関係をインストール
-
       - name: Install R
         run: |
           sudo apt-get update
