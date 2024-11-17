@@ -30,7 +30,7 @@ jobs:
 
       - name: List directory structure
         run: |
-          ls -R ./AlgoShowcase/algorithms/hello_world
+          ls -R ~/
 
       - name: Run all tests
         run: |
