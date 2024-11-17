@@ -20,10 +20,14 @@ for file in ` find . -name "hello.*" -print`; do
             echo "Running $file..."
             nim c -r "$file"
             ;;
+        *.cs)
+            echo "Running $file..."
+            mcs -out:"$file".exe "$file"
+            mono "$file".exe
+            ;;
         *)
             echo "Unsupported file type: $file"
             ;;
     esac
-    echo
+    echo '/n'
 done
-
