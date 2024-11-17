@@ -16,9 +16,14 @@ for file in ` find . -name "hello.*" -print`; do
             echo "Running $file..."
             Rscript "$file"
             ;;
+        *.nim)
+            echo "Running $file..."
+            nim c -r src/hello.nim
+            ;;
         *)
             echo "Unsupported file type: $file"
             ;;
     esac
     echo
 done
+
