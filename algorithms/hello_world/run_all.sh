@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # hello_worldディレクトリに移動
-cd "../hello_world" || { echo "ディレクトリの移動に失敗しました"; exit 1; }
+cd "/home/runner/work/AlgoShowcase/AlgoShowcase/algorithms/hello_world" || { echo "ディレクトリの移動に失敗しました"; exit 1; }
 
 # hello_world.* ファイルを実行
 for file in ` find . -name "hello.*" -print`; do
@@ -20,5 +20,5 @@ for file in ` find . -name "hello.*" -print`; do
             echo "Unsupported file type: $file"
             ;;
     esac
-    echo 
+    echo
 done
