@@ -13,9 +13,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./AlgoShowcase
 
     steps:
       - name: Checkout code
@@ -33,8 +30,8 @@ jobs:
 
       - name: Install Nim
         run: |
-            curl https://nim-lang.org/choosenim/init.sh -sSf | sh
-            echo 'export PATH="$HOME/.nimble/bin:$PATH"' >> ~/.bash_aliases
+          curl https://nim-lang.org/choosenim/init.sh -sSf | sh
+          echo 'export PATH="$HOME/.nimble/bin:$PATH"' >> ~/.bash_aliases
 
       - name: Load .bashrc
         run: |
@@ -44,9 +41,9 @@ jobs:
       - name: List directory structure
         run: |
           ls -R ~/ | grep AlgoShowcase
-          ls ./AlgoShowcase/algorithms/hello_world/
+          ls ~/AlgoShowcase/algorithms/hello_world/
 
       - name: Run all tests
         run: |
-          chmod +x ./AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
-          ./AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
+          chmod +x ~/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトの実行権限を付与
+          ~/AlgoShowcase/algorithms/hello_world/run_all.sh  # スクリプトを実行
