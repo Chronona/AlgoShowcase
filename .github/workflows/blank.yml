@@ -30,7 +30,7 @@ jobs:
 
       - name: List directory structure
         run: |
-          ls -R ~/
+          ls -R ~/ | grep AlgoShowcase
 
       - name: Run all tests
         run: |
