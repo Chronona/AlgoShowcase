@@ -16,3 +16,7 @@ echo `poetry --version`
 curl https://nim-lang.org/choosenim/init.sh -sSf | sh
 
 echo 'export PATH="$HOME/.nimble/bin:$PATH"' >> ~/.bash_aliases
+
+# CS
+
+sudo apt install -y mono-complete
