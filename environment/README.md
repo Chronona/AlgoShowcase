@@ -20,3 +20,9 @@ curl https://nim-lang.org/choosenim/init.sh -sSf | sh
 ```
 
 nimble init でプロジェクト作成
+
+## CS
+
+```bash
+sudo apt install -y mono-complete
+```
